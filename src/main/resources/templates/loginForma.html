@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css">
+<div class="container" >
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form class="box" th:action="@{/login}" method="post">
+                    <h1 style="font-size: 40px;font-family:arial; text-shadow:2px 2px 2px grey;">Login</h1>
+                    <div th:if="${param.error}" class="alert alert-error" style="color:white;text-shadow: 2px 2px 2px black;">
+                        Pogresan username ili šifra.
+                    </div>
+                   <input type="text"  name="username" id="username" placeholder="USERNAME"> <input type="password" name="password" id="password" placeholder="PASSWORD"> <a class="forgot text-muted" th:href="@{'/forgotPass'}" style="color:gray;">Zaboravili sifru?</a>
+                    <br><br> <input style="font-family:arial;border-radius:15px;width:130px;height:40px;background-color:#5c5c5c; color:white;" type="submit" name="" value="LOGIN">
+                    <p style="color:gray;">Nemate account? <a style="color:white;" th:href="@{'/korisnik-novi'}" class="nav-link">Registrujte se</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

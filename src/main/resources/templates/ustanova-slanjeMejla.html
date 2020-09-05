@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Material-Icons.css}" href="../static/css/Material-Icons.css" />
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../static/css/font-awesome.min.css">
+    <link th:href="@{/css/material-dashboard.css}" href="../static/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+    <link th:href="@{/css/black-dashboard.css}" href="../static/css/black-dashboard.css" rel="stylesheet" />
+    <style>
+        div.absolute{
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 1050px;
+            max-width: 1050px;
+            height: auto;
+            display: inline-block;
+
+        }
+
+    </style>
+
+</head>
+
+<body class="dark-edition">
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black">
+
+        <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="3a8db1f4-24d8-4dbf-85c9-4f5215c1b29a">
+            <ul class="nav">
+
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/ustanova-oglas-novi}">
+                        <i class="material-icons">add</i>
+                        <p>Dodaj oglas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/ustanova-oglas-lista}">
+                        <i class="material-icons">edit_user</i>
+                        <p>Izmeni oglas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/slanje-mejla}" >
+                        <i class="material-icons">person</i>
+                        <p>Subscriberi</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/logout}" >
+                        <i class="material-icons">logout</i>
+                        <p>Izloguj se</p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="absolute">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="col-md-5 mx-auto">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h5 class="title">Subscriberi:</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive ps">
+                                <form th:action="@{/posalji-mejl}" method="post">
+
+
+                                <table class="table tablesorter table-hover" id="">
+                                    <thead class=" text-primary">
+                                    <tr><th>Email</th>
+                                    </tr></thead>
+                                    <tbody th:each="mailingListe: ${mailingLista}">
+                                    <tr><td th:text="${mailingListe.email}"></td></tr>
+                                    </tbody>
+                                </table>
+                                    <input type="submit" value="posalji">
+                                </form>
+                                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+<!--<li class="nav-item ">
+                    <a class="nav-link" th:href="@{/slanje-mejla}" >
+                        <i class="material-icons">add</i>
+                        <p>Subscriberi</p>
+                    </a>
+                </li>-->
+
+<!--<div class="absolute">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="col-md-5 mx-auto">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h5 class="title">Izmeni ustanovu</h5>
+                    </div>
+                    <form  th:action="@{/slanje-mejla}" method="post">&lt;!&ndash;th:object="${ustanovaDto}"&ndash;&gt;
+                        <div class="card-body">
+                            <div class="col-md-12 ">
+                                <div class="form-group" th:each="mailingListe : ${mailingLista}">
+                                    <label>Email</label>
+                                    <input type="email" id="recipient" name="recipient"  class="form-control" th:text="${mailingListe.email}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label>Poruka</label>
+                                    <input type="text" id="message" name="message"  class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" id="btn_save" name="btn_save" class="btn btn-fill btn-primary">Izmeni</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+-->

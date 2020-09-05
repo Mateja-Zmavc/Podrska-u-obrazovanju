@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css">
+<div class="container" >
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form class="box" th:action="@{/salji-pass}" method="post">
+                    <h2 style="font-size: 40px;font-family:chalkie">A gde je sifra zalutala???</h2>
+
+                    <h3 style="font-size: 40px;font-family:chalkie">Unesite email: </h3>
+                    <p class="text-muted" style="color:white; font-size: 25px; font-family:chalkie"></p> <input type="text"  th:name="email" placeholder="EMAIL"> <a class="forgot text-muted" href="#" style="color:gray;"></a><br><br> <input style="border-radius:10px;width:100px;height:30px;background-color:white;" type="submit" name="" value="Posalji"  >
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

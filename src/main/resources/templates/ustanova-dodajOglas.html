@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Material-Icons.css}" href="../static/css/Material-Icons.css" />
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../static/css/font-awesome.min.css">
+    <link th:href="@{/css/material-dashboard.css}" href="../static/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+    <link th:href="@{/css/black-dashboard.css}" href="../static/css/black-dashboard.css" rel="stylesheet" />
+
+    <style>
+        div.absolute{
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 750px;
+            max-width: 750px;
+            height: auto;
+            display: inline-block;
+
+        }
+
+
+    </style>
+
+</head>
+
+<body class="dark-edition">
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black">
+
+        <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="3a8db1f4-24d8-4dbf-85c9-4f5215c1b29a">
+            <ul class="nav">
+
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/ustanova-oglas-novi}">
+                        <i class="material-icons">add</i>
+                        <p>Dodaj oglas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/ustanova-oglas-lista}">
+                        <i class="material-icons">edit_user</i>
+                        <p>Izmeni oglas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/slanje-mejla}" >
+                        <i class="material-icons">person</i>
+                        <p>Subscriberi</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/logout}" >
+                        <i class="material-icons">logout</i>
+                        <p>Izloguj se</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="absolute">
+        <div class="content">
+            <div class="container-fluid">
+                <!-- your content here -->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Dodaj oglas</h4>
+                            <p class="card-category">Popuni podatke</p>
+                        </div>
+                        <div class="card-body">
+                            <form th:object="${oglasDto}" th:action="@{/ustanova-oglas-sacuvaj}" method="post" enctype="multipart/form-data">
+                                <div class="row">
+
+                                    <div class="col-md-3">
+                                        <div class="form-group bmd-form-group">
+
+                                            <input type="text" id="naziv" name="naziv" th:field="*{naziv}" th:placeholder="Naziv" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <div class="form-group">
+                                            <label>Oblast</label>
+                                            <select name="oblast" id="oblast" th:field="*{oblast}">
+                                                <option value="IT" >IT</option>
+                                                <option value="Marketing" >Marketing</option>
+                                                <option value="LjudskiResursi" >LjudskiResursi</option>
+                                                <option value="Jezici" >Jezici</option>
+                                                <option value="Ekonomija" >Ekonomija</option>
+                                                <option value="Opste" >Opste</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <div class="form-group">
+                                            <label>Grad</label>
+                                            <select name="grad" id="grad" th:field="*{grad}">
+                                                <option value="Beograd" >Beograd</option>
+                                                <option value="NoviSad" >NoviSad</option>
+                                                <option value="Subotica" >Subotica</option>
+                                                <option value="Niš" >Niš</option>
+                                                <option value="Užice" >Užice</option>
+                                                <option value="Kruševac" >Kruševac</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 ">
+                                        <div class="form-group">
+                                            <label>Nivo</label>
+                                            <select name="nivo" id="nivo" th:field="*{nivo}">
+                                                <option value="Fakultet" >Fakultet</option>
+                                                <option value="VišaŠkola" >VišaŠkola</option>
+                                                <option value="Kurs" >Kurs</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group bmd-form-group">
+
+                                            <input type="text" name="text"  id="opis" th:field="*{opis}" th:placeholder="Opis" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group bmd-form-group">
+                                            <input type="file" name="slika" id="slika" th:field="*{slikaMulti}" th:placeholder="Slika" class="form-control" required="">Ubaci sliku
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group bmd-form-group">
+
+                                            <input type="text" name="cena" id="cena" th:field="*{cena}" th:placeholder="Cena" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" name="btn_save" id="btn_save" class="btn btn-primary pull-right">Dodaj oglas</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

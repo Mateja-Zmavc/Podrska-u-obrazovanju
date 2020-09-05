@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sr">
+<head>
+    <title>THE.Group - Podrska u obrazovanju</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link rel="stylesheet" th:href="@{/css/index.css}" href="../static/css/index.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+
+</head>
+<body>
+<header id="header" class="alt">
+    <div class="logo"><a th:href="@{/novi}">THE.Group <span>- Podrska u obrazovnaju</span></a></div>
+</header>
+
+
+
+<section id="banner" data-video=th:"@{../../static/images/banner}">
+    <div class="inner">
+        <p style="font-size:60px"><i>Treba Vam pomoć?</i></p>
+        <br>
+        <p>Tu smo da pomognemo! Samo unesite željene parametre i mi radimo teži deo posla!<br/>
+            <br><br>
+            <a href="#one" class="button special scrolly">Počni</a>
+    </div>
+</section>
+
+<section style="height:800px;" id="one" class="wrapper style2">
+    <div class="main-w3layouts wrapper">
+        <h1 style="text-shadow:5px 5px 30px black; font-family:'Arial Black'; color:white; font-size:30px">REGISTRUJ SE</h1>
+        <div class="main-agileinfo">
+            <div style="height:580px;" class="agileits-top">
+                <form style="padding-left:20px; padding-right:20px; padding-top:20px; padding-bottom:20px;" th:object="${registerDto}" th:action="@{/korisnik-sacuvaj}" method="post">
+                   
+
+                    <input class="text" id="ime" type="text" name="Ime" th:field="*{ime}" placeholder="Ime" required="" onkeyup="zabranaUnosaSpecKarIme()" ><br>
+
+                   
+
+                    <input class="text" id="prezime" type="text" name="Prezime" th:field="*{prezime}" placeholder="Prezime" required="" onkeypress=zabranaUnosaSpecKarPrezime()><br>
+
+                  
+
+                    <input class="text" id="username" type="text" name="Username" th:field="*{username}" placeholder="Username" required="">
+
+                    
+
+                    <input class="text email" id="email" type="email" name="email" th:field="*{email}" placeholder="Email" required="" >
+
+               
+
+                    <input class="text" id="password" type="password" name="password" th:field="*{password}" placeholder="Password" required="">
+                 
+
+                    <input class="text w3lpass" id="confirm_password" type="password" name="password_confirm" placeholder="Confirm Password" required="">
+
+                    <div class="wthree-text">
+                        <div class="clear"> </div>
+                    </div>
+                    <input type="submit" value="REGISTRUJ SE" id="dugme" onclick=validatePassword(),testEmail() >
+                                     <p style="text-shadow:5px 5px 30px black; font-family:'Arial'; color:black;">Imas nalog? <a style="color:red;" th:href="@{/login}" href="loginForma.html" > Uloguj se!</a></p>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <ul class="colorlib-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+</section>
+
+<section id="two" class="wrapper style3">
+    <div class="inner">
+        <div id="flexgrid">
+            <div>
+                <header>
+                    <h3>Kontakt</h3>
+                </header><br><br>
+                <p><a href="tel:011-329-6987" class="fa fa-phone">011-329-6987</a></p>
+            </div>
+            <div>
+                <header>
+                    <h3>Lokacija</h3>
+                </header><br><br>
+                <p><a href="https://www.google.com/maps/place/ITS+-+Information+Technology+School/@44.8016856,20.4179246,17z/data=!3m1!4b1!4m5!3m4!1s0x475a6fed108da8a7:0x9c662a8e931516fb!8m2!3d44.8016818!4d20.4201133"><i class="fa fa-map-marker"></i>Adresa</a></p>
+            </div>
+            <div>
+                <header>
+                    <h3>Mejl</h3>
+                </header>
+                <br>
+                <br>
+                <p><a href="mailto:mateja0717@its.edu.rs" class="fa fa-envelope-o"></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="colorlibcopy-agile" >
+        <p>© 2020 THE.Group - Podrska u obrazovanju. All rights reserved | Design by <a href="#" target="_blank">THE.Group</a></p>
+    </div>
+</section>
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/jquery.scrolly.min.js}"></script>
+<script th:src="@{js/jquery.scrollex.min.js}"></script>
+<script th:src="@{js/skel.min.js}"></script>
+<script th:src="@{js/util.js}"></script>
+<script th:src="@{js/main.js}"></script>
+<script th:src="@{js/passwordMatch.js}"></script>
+<script th:src="@{js/regex.js}"></script>
+
+
+</body>
+</html>
